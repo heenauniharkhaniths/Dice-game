@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 public class DiceGame {
 
-    DiceSet dice = new DiceSet();
-    Player player = new Player();
-    Scanner scan = new Scanner(System.in);
+    private DiceSet dice = new DiceSet();
+    private Player player = new Player();
+    private Scanner scan = new Scanner(System.in);
 
     public void Start(){
         System.out.println("Welcome to the Dice Guessing Game");
@@ -20,6 +20,28 @@ public class DiceGame {
         }else {
             System.out.println("Sorry! You lost, Try again next time");
         }
+    }
+
+    private void playRoundOne () {
+
+        int playerTotal = dice.rollTotal();
+        int computerTotal = dice.rollTotal();
+
+        String guess = askForGuess();
+
+        if (playerTotal == computerTotal) {
+            System.out.println("It`s a tie");
+        } 
+        else if (guessIsCorrect(guess, playerTotal, computerTotal)) {
+          player.addPoints();
+          System.out.println("Correct guess, You got 1 point");
+        }
+        else {
+            player.loselive();
+            System.out.println("Wrong guess, You lost 1 life");
+
+        }
+        showRoundInfo(playerTotal, computerTotal);
     }
     public static void main(String[] args) {
         
