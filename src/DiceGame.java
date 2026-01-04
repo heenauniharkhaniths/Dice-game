@@ -43,6 +43,17 @@ public class DiceGame {
         }
         showRoundInfo(playerTotal, computerTotal);
     }
+
+    private String askForGuess() {
+        String guess = "";
+        while (!guess.equals("player") && !guess.equals("computer")) {
+            System.out.println("Who has the higher total? (player/computer)");
+            guess = scan.nextLine().toLowerCase();
+        }
+        return guess;
+    }
+
+    
     public static void main(String[] args) {
         
     }
