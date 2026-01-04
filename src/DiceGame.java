@@ -62,8 +62,14 @@ public class DiceGame {
         }
         return false;
     }
-
-    
+     
+    public void showRoundInfo (int playerTotal, int computerTotal) {
+        System.out.println("Player rolled: " + playerTotal);
+        System.out.println("Computer rolled: " + computerTotal);
+        System.out.println("Points: " + player.getPoints());
+        System.out.println("Tries left: " + player.getLives());
+        System.out.println("----------------------------------\n");
+    }
 
     public static void main(String[] args) {
         
