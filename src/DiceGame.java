@@ -52,8 +52,19 @@ public class DiceGame {
         }
         return guess;
     }
+    
+    public boolean guessIsCorrect (String guess, int playerTotal, int computerTotal) {
+        if (guess.equals("player") && playerTotal > computerTotal) {
+            return true;
+        } 
+        if (guess.equals("computer") && computerTotal > playerTotal) {
+            return true;
+        }
+        return false;
+    }
 
     
+
     public static void main(String[] args) {
         
     }
