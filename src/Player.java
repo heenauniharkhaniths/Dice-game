@@ -20,11 +20,16 @@ public class Player {
     }
 
     public boolean hasWon(){
-        return points >= 10;
+        return points >= 5;
     }
 
     public boolean haslives(){
         return lives > 0;
+    }
+    
+    public void reset() {
+      points = 0;
+      lives = 3;
     }
     
 }

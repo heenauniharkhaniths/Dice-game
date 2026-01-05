@@ -2,24 +2,41 @@ import java.util.Scanner;
 
 public class DiceGame {
 
-    private DiceSet dice = new DiceSet();
-    private Player player = new Player();
-    private Scanner scan = new Scanner(System.in);
+    final  DiceSet dice = new DiceSet();
+    final  Player player = new Player();
+    final  Scanner scan = new Scanner(System.in);
 
     public void Start(){
         System.out.println("Welcome to the Dice Guessing Game");
         System.out.println("You start with 0 points and have 3 lifes" +
         "you have to secure 10 points to win before losing 3 lives");
 
-        while (player.haslives() && !player.hasWon()) {
-            playRoundOne ();
-        }
+        boolean keepPlaying = true;
+        
+        while (keepPlaying){
 
-        if (player.hasWon()) {
-            System.out.println("congratulations! you won");
-        }else {
-            System.out.println("Sorry! You lost, Try again next time");
+            playGame();
+            
+            keepPlaying = askToContinue();
+
+            if (keepPlaying) {
+             player.reset(); // Reset for next game
+             System.out.println("\n Game restarted!\n");
+            }
+
         }
+        System.out.println("thanks for playing");
+    }
+        public void playGame() {
+            while (player.haslives() && !player.hasWon()) {
+              playRoundOne ();
+            }
+
+            if (player.hasWon()) {
+              System.out.println("congratulations! you won");
+            } else {
+            System.out.println("Sorry! You lost, Try again next time");
+          }
     }
 
     private void playRoundOne () {
@@ -71,7 +88,18 @@ public class DiceGame {
         System.out.println("----------------------------------\n");
     }
 
-    public static void main(String[] args) {
+    private boolean askToContinue() {
+        String choice = "";
+        while (!choice.equals("yes") && !choice.equals("no")) {
+            System.out.println("Do you want to continue? (Yes/No)");
+            choice = scan.nextLine().toLowerCase();
+        }
         
+        return choice.equals("yes");
+    }
+
+    public static void main(String[] args) {
+        DiceGame game = new DiceGame();
+        game.Start();
     }
 }
