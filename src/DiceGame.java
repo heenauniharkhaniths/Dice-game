@@ -8,8 +8,8 @@ public class DiceGame {
 
     public void Start(){
         System.out.println("Welcome to the Dice Guessing Game");
-        System.out.println("You start with 0 points and have 3 lifes" +
-        "you have to secure 10 points to win before losing 3 lives");
+        System.out.println("You start with 0 points and have 3 lifes" + " " +
+        "you have to secure 5 points to win before losing 3 lives");
 
         boolean keepPlaying = true;
         
